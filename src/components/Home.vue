@@ -19,11 +19,15 @@
 </template>
 
 <script>
-import { ipcRenderer }from 'electron'
+import { ipcRenderer } from "electron";
 import Pill from './Pill.vue'
 
 export default {
+    name: "Home",
     components: { Pill },
+    created() {
+      console.log(ipcRenderer)
+    },
     data: function() {
       return {
         files: [],
@@ -39,8 +43,8 @@ export default {
       processSubtitles() {
         console.log(this.files)
 
-        ipcRenderer.send('blablabla', 'ping')
-        ipcRenderer.on('blablabla', (event, resp) => {
+        ipcRenderer.send('port', 'ping')
+        ipcRenderer.on('port', (event, resp) => {          
           console.log(resp)
         })
       }

@@ -1,8 +1,11 @@
 const { ipcMain } = require('electron')
 
-ipcMain.on('blablabla', (event, arg) => {
+ipcMain.on('port', (event, arg) => {
     console.log(arg)
-
-    event.replay('blablabla', 'pong')
-
+    event.reply('port', 'pong')
 })
+
+//ipcMain.on('port', (event, arg) => {
+  //  console.log(arg) // prints "ping"
+//    event.returnValue = 'pong'
+  //})
